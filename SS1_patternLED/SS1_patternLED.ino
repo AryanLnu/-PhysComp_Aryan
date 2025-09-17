@@ -66,7 +66,7 @@ void loop() {
 
   pattern++;
   if (pattern > 5){
-    pattern = 1;
+    pattern = 0;
     loopCount++;
   }
   Serial.println(pattern);
