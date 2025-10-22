@@ -1,9 +1,9 @@
 // Simple Mini Lighting Desk 
 const int potPin = 4;      // Potentiometer
 const int buttonPin = 5;    // Button
-const int greenLED = 9;       // Red LED pin
-const int whiteLED = 10;    // Green LED pin
-const int redLED = 11;     // Blue LED pin
+const int greenLED = 9;       // green LED pin
+const int whiteLED = 10;    // white LED pin
+const int redLED = 11;     // red LED pin
 
 int mode = 0;
 int lastButton = HIGH;
