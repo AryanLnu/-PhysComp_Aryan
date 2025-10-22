@@ -1,9 +1,9 @@
 // Simple Mini Lighting Desk 
 const int potPin = 4;      // Potentiometer
 const int buttonPin = 5;    // Button
-const int redLED = 9;       // Red LED pin
-const int greenLED = 10;    // Green LED pin
-const int blueLED = 11;     // Blue LED pin
+const int greenLED = 9;       // Red LED pin
+const int whiteLED = 10;    // Green LED pin
+const int redLED = 11;     // Blue LED pin
 
 int mode = 0;
 int lastButton = HIGH;
@@ -13,9 +13,9 @@ void setup() {
   Serial.begin(115200);
 
   pinMode(buttonPin, INPUT_PULLUP);
-  pinMode(redLED, OUTPUT);
   pinMode(greenLED, OUTPUT);
-  pinMode(blueLED, OUTPUT);
+  pinMode(redLED, OUTPUT);
+  pinMode(whiteLED, OUTPUT);
 }
 
 void loop() {
@@ -30,25 +30,25 @@ void loop() {
   }
   lastButton = button;
 
-  // --- Scene 1: Warm white (yellowish) ---
+  // --- Scene 1: green and white ---
   if (mode == 0) {
-    analogWrite(redLED, brightness);
-    analogWrite(greenLED, brightness / 2);
-    analogWrite(blueLED, 0);
+    analogWrite(greenLED, brightness);
+    analogWrite(whiteLED, brightness / 2);
+    analogWrite(redLED, 0);
   }
 
-  // --- Scene 2: Cool blue ---
+  // --- Scene 2: Cool red ---
   else if (mode == 1) {
-    analogWrite(redLED, 0);
-    analogWrite(greenLED, brightness / 3);
-    analogWrite(blueLED, brightness);
+    analogWrite(greenLED, 0);
+    analogWrite(whiteLED, brightness / 3);
+    analogWrite(redLED, brightness);
   }
 
   // --- Scene 3: Color mix ---
   else {
     analogWrite(redLED, brightness / 2);
     analogWrite(greenLED, 255 - brightness);
-    analogWrite(blueLED, brightness);
+    analogWrite(whiteLED, brightness);
   }
   Serial.println(digitalRead(buttonPin));
   delay(100);
